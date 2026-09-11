@@ -1,0 +1,1783 @@
+```html
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Сушисё — Sushi Delivery Бишкек</title>
+
+<meta name="description" content="Сушисё — суши жана роллдор. Бишкек шаарында жеткирүү.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0b0b0b;
+    color:#fff;
+    line-height:1.5;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(10,10,10,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #242424;
+}
+
+.nav{
+    max-width:1200px;
+    height:75px;
+    margin:auto;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+    color:#d4af37;
+    letter-spacing:1px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.nav-links a{
+    font-size:14px;
+    color:#ddd;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#d4af37;
+}
+
+.phone{
+    color:#d4af37!important;
+    font-weight:bold;
+}
+
+.cart-btn{
+    border:none;
+    background:#d4af37;
+    color:#111;
+    padding:11px 17px;
+    border-radius:25px;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:140px 20px 80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.84)),
+    url("https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1800&q=85")
+    center/cover no-repeat;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero small{
+    color:#d4af37;
+    font-size:15px;
+    letter-spacing:3px;
+}
+
+.hero h1{
+    font-size:clamp(50px,8vw,90px);
+    margin:15px 0;
+    line-height:1;
+}
+
+.hero p{
+    color:#ddd;
+    font-size:19px;
+    margin-bottom:30px;
+}
+
+.gold-btn{
+    display:inline-block;
+    background:#d4af37;
+    color:#111;
+    padding:15px 27px;
+    border-radius:30px;
+    font-weight:bold;
+    border:none;
+    transition:.3s;
+}
+
+.gold-btn:hover{
+    transform:translateY(-2px);
+    background:#f0cc54;
+}
+
+/* GENERAL */
+
+section{
+    padding:90px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title span{
+    color:#d4af37;
+    font-size:13px;
+    letter-spacing:3px;
+}
+
+.section-title h2{
+    font-size:40px;
+    margin-top:8px;
+}
+
+/* CATEGORIES */
+
+.categories{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.category{
+    border:1px solid #444;
+    background:#151515;
+    color:#ddd;
+    padding:10px 18px;
+    border-radius:25px;
+}
+
+.category.active,
+.category:hover{
+    background:#d4af37;
+    color:#111;
+    border-color:#d4af37;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product{
+    background:#151515;
+    border:1px solid #272727;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+    border-color:#d4af37;
+}
+
+.product-img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+}
+
+.product-body{
+    padding:18px;
+}
+
+.product h3{
+    font-size:19px;
+    margin-bottom:7px;
+}
+
+.product p{
+    color:#999;
+    font-size:14px;
+    min-height:43px;
+}
+
+.product-bottom{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    color:#d4af37;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.add{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#d4af37;
+    color:#111;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* PROMO */
+
+.promo{
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1617196034183-421b4917c92d?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+}
+
+.promo-box{
+    max-width:700px;
+}
+
+.promo h2{
+    font-size:45px;
+    margin:12px 0;
+}
+
+.promo p{
+    color:#ddd;
+    margin-bottom:25px;
+}
+
+/* REELS */
+
+.reels{
+    background:#101010;
+}
+
+.reels-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.reel{
+    position:relative;
+    height:440px;
+    overflow:hidden;
+    border-radius:20px;
+    background:#181818;
+}
+
+.reel img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.reel:hover img{
+    transform:scale(1.05);
+}
+
+.reel-content{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:25px;
+    background:linear-gradient(transparent,rgba(0,0,0,.95));
+}
+
+.instagram-btn{
+    display:inline-block;
+    margin-top:12px;
+    padding:11px 18px;
+    border-radius:25px;
+    background:#fff;
+    color:#111;
+    font-weight:bold;
+}
+
+/* DELIVERY */
+
+.delivery{
+    background:#141414;
+}
+
+.delivery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.delivery-card{
+    padding:30px;
+    background:#1c1c1c;
+    border:1px solid #292929;
+    border-radius:18px;
+}
+
+.delivery-card h3{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.delivery-card p{
+    color:#bbb;
+}
+
+/* ADDRESS */
+
+.address-box{
+    margin-top:25px;
+    padding:25px;
+    background:#1c1c1c;
+    border:1px solid #292929;
+    border-radius:18px;
+    text-align:center;
+}
+
+.address-box h3{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.address-box p{
+    color:#ddd;
+    font-size:17px;
+}
+
+.address-box a{
+    display:inline-block;
+    margin-top:15px;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-image{
+    width:100%;
+    height:430px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.about-text h2{
+    font-size:42px;
+    margin:10px 0 20px;
+}
+
+.about-text p{
+    color:#aaa;
+    margin-bottom:15px;
+}
+
+/* FOOTER */
+
+footer{
+    padding:50px 20px 100px;
+    background:#070707;
+    border-top:1px solid #222;
+}
+
+.footer-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:30px;
+}
+
+footer h3{
+    color:#d4af37;
+    margin-bottom:15px;
+}
+
+footer p,
+footer a{
+    color:#999;
+    display:block;
+    margin:7px 0;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:40px;
+    padding-top:25px;
+    border-top:1px solid #222;
+    color:#666;
+}
+
+/* CART */
+
+.cart{
+    position:fixed;
+    right:-430px;
+    top:0;
+    width:420px;
+    max-width:100%;
+    height:100vh;
+    background:#111;
+    z-index:2000;
+    border-left:1px solid #333;
+    transition:.35s;
+    padding:25px;
+    overflow-y:auto;
+}
+
+.cart.open{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.close{
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:28px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid #292929;
+}
+
+.cart-item small{
+    color:#999;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.qty button{
+    width:28px;
+    height:28px;
+    border:none;
+    border-radius:50%;
+    background:#333;
+    color:#fff;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    margin:25px 0;
+    font-size:21px;
+}
+
+.checkout{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#25D366;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+}
+
+/* CHECKOUT */
+
+.checkout-form{
+    display:none;
+    margin-top:20px;
+}
+
+.checkout-form.show{
+    display:block;
+}
+
+.checkout-form h3{
+    color:#d4af37;
+    margin-bottom:15px;
+}
+
+.checkout-form input,
+.checkout-form textarea{
+    width:100%;
+    padding:13px;
+    margin-bottom:12px;
+    border:1px solid #333;
+    background:#1b1b1b;
+    color:#fff;
+    border-radius:8px;
+    outline:none;
+}
+
+.checkout-form textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.send-order{
+    width:100%;
+    padding:14px;
+    background:#25D366;
+    border:none;
+    border-radius:10px;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.delivery-info{
+    background:#191919;
+    border-left:3px solid #d4af37;
+    padding:12px;
+    margin:15px 0;
+    color:#aaa;
+    font-size:13px;
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:1500;
+    display:none;
+}
+
+.overlay.show{
+    display:block;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    display:none;
+}
+
+@media(max-width:900px){
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .reels-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .delivery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:flex;
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        height:65px;
+        background:#111;
+        border-top:1px solid #333;
+        z-index:1200;
+        justify-content:space-around;
+        align-items:center;
+    }
+
+    .mobile-menu a{
+        color:#aaa;
+        font-size:12px;
+        text-align:center;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:70px 15px;
+    }
+
+    .hero{
+        padding:120px 15px 70px;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .reels-grid{
+        grid-template-columns:1fr;
+    }
+
+    .reel{
+        height:500px;
+    }
+
+    .about-image{
+        height:300px;
+    }
+
+    .promo h2{
+        font-size:34px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .cart{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+<div class="nav">
+
+<a href="#" class="logo">Сушисё</a>
+
+<div class="nav-links">
+
+<a href="#menu">Меню</a>
+<a href="#promo">Акции</a>
+<a href="#reels">Reels</a>
+<a href="#delivery">Доставка</a>
+<a href="#about">О нас</a>
+
+<a class="phone" href="tel:+996508867867">
+0508 867 867
+</a>
+
+<button class="cart-btn" onclick="openCart()">
+Себет <span id="cartCount">0</span>
+</button>
+
+</div>
+</div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<small>SUSHISYO • SUSHI DELIVERY</small>
+
+<h1>Сушисё</h1>
+
+<p>
+Даамдуу суши жана роллдор.<br>
+Бишкек шаарында жеткирүү.
+</p>
+
+<a href="#menu" class="gold-btn">
+Менюну көрүү
+</a>
+
+</div>
+</section>
+
+
+<!-- MENU -->
+
+<section id="menu">
+
+<div class="container">
+
+<div class="section-title">
+<span>OUR MENU</span>
+<h2>Меню</h2>
+</div>
+
+<div class="categories">
+
+<button class="category active"
+onclick="filterProducts('all',this)">
+Баары
+</button>
+
+<button class="category"
+onclick="filterProducts('rolls',this)">
+Роллдор
+</button>
+
+<button class="category"
+onclick="filterProducts('sets',this)">
+Сет
+</button>
+
+<button class="category"
+onclick="filterProducts('sushi',this)">
+Суши
+</button>
+
+</div>
+
+
+<div class="products">
+
+
+<div class="product" data-category="rolls">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Филадельфия</h3>
+
+<p>Лосось, сыр, күрүч жана нори.</p>
+
+<div class="product-bottom">
+
+<span class="price">450 сом</span>
+
+<button class="add"
+onclick="addToCart('Филадельфия',450)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="product" data-category="rolls">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Калифорния</h3>
+
+<p>Краб, сыр, авокадо жана нори.</p>
+
+<div class="product-bottom">
+
+<span class="price">420 сом</span>
+
+<button class="add"
+onclick="addToCart('Калифорния',420)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="product" data-category="sets">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Суши Сет</h3>
+
+<p>Ар түрдүү роллдордон турган сет.</p>
+
+<div class="product-bottom">
+
+<span class="price">990 сом</span>
+
+<button class="add"
+onclick="addToCart('Суши Сет',990)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="product" data-category="sushi">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Лосось Суши</h3>
+
+<p>Жаңы лосось жана суши күрүчү.</p>
+
+<div class="product-bottom">
+
+<span class="price">350 сом</span>
+
+<button class="add"
+onclick="addToCart('Лосось Суши',350)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="product" data-category="rolls">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Темпура Ролл</h3>
+
+<p>Кытырак темпурадагы өзгөчө ролл.</p>
+
+<div class="product-bottom">
+
+<span class="price">470 сом</span>
+
+<button class="add"
+onclick="addToCart('Темпура Ролл',470)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="product" data-category="sets">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1562802378-063ec186a863?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Большой Сет</h3>
+
+<p>Үй-бүлөгө ылайыктуу чоң сет.</p>
+
+<div class="product-bottom">
+
+<span class="price">1490 сом</span>
+
+<button class="add"
+onclick="addToCart('Большой Сет',1490)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="product" data-category="rolls">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Спайси Ролл</h3>
+
+<p>Ачуу соус менен өзгөчө ролл.</p>
+
+<div class="product-bottom">
+
+<span class="price">430 сом</span>
+
+<button class="add"
+onclick="addToCart('Спайси Ролл',430)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="product" data-category="sushi">
+
+<img class="product-img"
+src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85">
+
+<div class="product-body">
+
+<h3>Классик Суши</h3>
+
+<p>Классикалык сушинин тандоосу.</p>
+
+<div class="product-bottom">
+
+<span class="price">390 сом</span>
+
+<button class="add"
+onclick="addToCart('Классик Суши',390)">
++
+</button>
+
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</section>
+
+
+<!-- PROMO -->
+
+<section class="promo" id="promo">
+
+<div class="container">
+
+<div class="promo-box">
+
+<span style="color:#d4af37">
+SPECIAL OFFER
+</span>
+
+<h2>
+Сушисё менен кечиңизди өзгөчө кылыңыз
+</h2>
+
+<p>
+Сүйүктүү роллдоруңузду тандап, заказ бериңиз.
+Биз даярдап, көрсөтүлгөн дарекке жеткиребиз.
+</p>
+
+<a href="#menu" class="gold-btn">
+Заказ берүү
+</a>
+
+</div>
+</div>
+</section>
+
+
+<!-- REELS -->
+
+<section class="reels" id="reels">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>INSTAGRAM</span>
+
+<h2>Биздин Reels</h2>
+
+</div>
+
+
+<div class="reels-grid">
+
+
+<div class="reel">
+
+<img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=85">
+
+<div class="reel-content">
+
+<h3>Сушисё Reels</h3>
+
+<p>Биздин Instagram видеолорду көрүңүз.</p>
+
+<a
+href="https://www.instagram.com/sushisyo_bishkek/reels/"
+target="_blank"
+class="instagram-btn">
+Instagram'да көрүү
+</a>
+
+</div>
+</div>
+
+
+<div class="reel">
+
+<img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=85">
+
+<div class="reel-content">
+
+<h3>Жаңы видеолор</h3>
+
+<p>Суши даярдоо жана жаңы сунуштар.</p>
+
+<a
+href="https://www.instagram.com/sushisyo_bishkek/reels/"
+target="_blank"
+class="instagram-btn">
+Instagram'да көрүү
+</a>
+
+</div>
+</div>
+
+
+<div class="reel">
+
+<img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=900&q=85">
+
+<div class="reel-content">
+
+<h3>Сушисё Instagram</h3>
+
+<p>Бардык жаңы видеолор ушул жерде.</p>
+
+<a
+href="https://www.instagram.com/sushisyo_bishkek/reels/"
+target="_blank"
+class="instagram-btn">
+Instagram'га өтүү
+</a>
+
+</div>
+</div>
+
+
+</div>
+</div>
+</section>
+
+
+<!-- DELIVERY -->
+
+<section id="delivery" class="delivery">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>DELIVERY</span>
+
+<h2>Жеткирүү</h2>
+
+</div>
+
+
+<div class="delivery-grid">
+
+
+<div class="delivery-card">
+
+<h3>200 сомго чейин</h3>
+
+<p>
+Жеткирүү акысынын 200 сомго чейинки бөлүгүн Сушисё төлөйт.
+</p>
+
+</div>
+
+
+<div class="delivery-card">
+
+<h3>200 сомдон ашса</h3>
+
+<p>
+Мисалы, жеткирүү 300 сом болсо,
+Сушисё 200 сомун төлөйт,
+калган 100 сомду кардар төлөйт.
+</p>
+
+</div>
+
+
+<div class="delivery-card">
+
+<h3>Иштөө убактысы</h3>
+
+<p>
+Күн сайын: 11:00 — 23:00
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="address-box">
+
+<h3>Биздин дарек</h3>
+
+<p>
+Бишкек, улица Махатмы Ганди, 201Б/2
+</p>
+
+<p>
+Рынок «Азиз»
+</p>
+
+<a
+href="https://www.google.com/maps/search/?api=1&query=Бишкек+улица+Махатмы+Ганди+201Б%2F2+Рынок+Азиз"
+target="_blank"
+class="gold-btn">
+
+Картадан көрүү
+
+</a>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="about-grid">
+
+<img
+class="about-image"
+src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=85">
+
+<div class="about-text">
+
+<span style="color:#d4af37">
+ABOUT SUSHISYO
+</span>
+
+<h2>
+Сапаттуу суши. Жакшы маанай.
+</h2>
+
+<p>
+Сушисё — даамдуу суши жана роллдорду сүйгөндөр үчүн.
+Биз ар бир заказды жаңыдан даярдоого жана сапатка көңүл бурабыз.
+</p>
+
+<p>
+Заказды сайт аркылуу тандап,
+дарегиңизди көрсөтүп WhatsApp аркылуу жөнөтө аласыз.
+</p>
+
+<a
+href="tel:+996508867867"
+class="gold-btn">
+0508 867 867
+</a>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h3>Сушисё</h3>
+
+<p>Sushi Delivery</p>
+
+<p>Даамдуу суши жана роллдор.</p>
+
+</div>
+
+
+<div>
+
+<h3>Байланыш</h3>
+
+<a href="tel:+996508867867">
+0508 867 867
+</a>
+
+<a
+href="https://www.instagram.com/sushisyo_bishkek/"
+target="_blank">
+Instagram
+</a>
+
+</div>
+
+
+<div>
+
+<h3>Дарек</h3>
+
+<p>
+Бишкек, улица Махатмы Ганди, 201Б/2
+</p>
+
+<p>
+Рынок «Азиз»
+</p>
+
+<p>
+11:00 — 23:00
+</p>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 Сушисё. Бардык укуктар корголгон.
+
+</div>
+
+</footer>
+
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu">
+
+<a href="#menu">Меню</a>
+
+<a href="#reels">Reels</a>
+
+<a href="#delivery">Доставка</a>
+
+<a href="#about">О нас</a>
+
+<a href="javascript:void(0)" onclick="openCart()">
+Себет
+</a>
+
+</div>
+
+
+<!-- OVERLAY -->
+
+<div
+class="overlay"
+id="overlay"
+onclick="closeCart()">
+</div>
+
+
+<!-- CART -->
+
+<div class="cart" id="cart">
+
+<div class="cart-header">
+
+<h2>Себет</h2>
+
+<button class="close" onclick="closeCart()">
+×
+</button>
+
+</div>
+
+
+<div id="cartItems">
+
+<p style="color:#888">
+Себет бош.
+</p>
+
+</div>
+
+
+<div class="total">
+
+<strong>Жалпы:</strong>
+
+<strong id="cartTotal">
+0 сом
+</strong>
+
+</div>
+
+
+<button
+class="checkout"
+onclick="showCheckout()">
+Заказды улантуу
+</button>
+
+
+<div
+class="checkout-form"
+id="checkoutForm">
+
+<h3>Заказды ырастоо</h3>
+
+
+<input
+type="text"
+id="customerName"
+placeholder="Атыңыз">
+
+
+<input
+type="tel"
+id="customerPhone"
+placeholder="Телефон номериңиз">
+
+
+<textarea
+id="customerAddress"
+placeholder="Жеткирүү дарегиңиз"></textarea>
+
+
+<textarea
+id="customerComment"
+placeholder="Кошумча маалымат"></textarea>
+
+
+<div class="delivery-info">
+
+Жеткирүү 200 сомго чейин Сушисё тарабынан төлөнөт.
+Эгер жеткирүү 200 сомдон ашса,
+ашкан бөлүгүн кардар төлөйт.
+
+</div>
+
+
+<button
+class="send-order"
+onclick="sendOrder()">
+
+WhatsApp аркылуу заказ берүү
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* CART */
+
+let cart = [];
+
+
+/* ADD TO CART */
+
+function addToCart(name,price){
+
+let existing =
+cart.find(item => item.name === name);
+
+if(existing){
+
+existing.qty++;
+
+}else{
+
+cart.push({
+name:name,
+price:price,
+qty:1
+});
+
+}
+
+updateCart();
+
+openCart();
+
+}
+
+
+/* UPDATE CART */
+
+function updateCart(){
+
+const items =
+document.getElementById("cartItems");
+
+const total =
+document.getElementById("cartTotal");
+
+const count =
+document.getElementById("cartCount");
+
+items.innerHTML = "";
+
+let totalPrice = 0;
+let totalCount = 0;
+
+
+if(cart.length === 0){
+
+items.innerHTML =
+'<p style="color:#888">Себет бош.</p>';
+
+}else{
+
+cart.forEach((item,index)=>{
+
+totalPrice += item.price * item.qty;
+
+totalCount += item.qty;
+
+const div =
+document.createElement("div");
+
+div.className = "cart-item";
+
+div.innerHTML = `
+
+<div>
+<strong>${item.name}</strong>
+<br>
+<small>${item.price} сом × ${item.qty}</small>
+</div>
+
+<div class="qty">
+
+<button onclick="changeQty(${index},-1)">
+−
+</button>
+
+<span>${item.qty}</span>
+
+<button onclick="changeQty(${index},1)">
++
+</button>
+
+</div>
+
+`;
+
+items.appendChild(div);
+
+});
+
+}
+
+
+total.innerText =
+totalPrice + " сом";
+
+count.innerText =
+totalCount;
+
+}
+
+
+/* CHANGE QUANTITY */
+
+function changeQty(index,value){
+
+cart[index].qty += value;
+
+if(cart[index].qty <= 0){
+
+cart.splice(index,1);
+
+}
+
+updateCart();
+
+}
+
+
+/* OPEN CART */
+
+function openCart(){
+
+document
+.getElementById("cart")
+.classList.add("open");
+
+document
+.getElementById("overlay")
+.classList.add("show");
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+document
+.getElementById("cart")
+.classList.remove("open");
+
+document
+.getElementById("overlay")
+.classList.remove("show");
+
+}
+
+
+/* CHECKOUT */
+
+function showCheckout(){
+
+if(cart.length === 0){
+
+alert("Адегенде менюдөн тамак тандаңыз.");
+
+return;
+
+}
+
+document
+.getElementById("checkoutForm")
+.classList.add("show");
+
+}
+
+
+/* SEND ORDER TO WHATSAPP */
+
+function sendOrder(){
+
+if(cart.length === 0){
+
+alert("Себет бош.");
+
+return;
+
+}
+
+
+const name =
+document
+.getElementById("customerName")
+.value.trim();
+
+
+const phone =
+document
+.getElementById("customerPhone")
+.value.trim();
+
+
+const address =
+document
+.getElementById("customerAddress")
+.value.trim();
+
+
+const comment =
+document
+.getElementById("customerComment")
+.value.trim();
+
+
+if(!name || !phone || !address){
+
+alert(
+"Атыңызды, телефонуңузду жана дарегиңизди жазыңыз."
+);
+
+return;
+
+}
+
+
+let message =
+"САЛАМ, СУШИСЁДОН ЗАКАЗ БЕРЕМ\n\n";
+
+
+message +=
+"Кардар: " + name + "\n";
+
+message +=
+"Телефон: " + phone + "\n";
+
+message +=
+"Жеткирүү дареги: " + address + "\n\n";
+
+
+message +=
+"ЗАКАЗ:\n";
+
+
+let total = 0;
+
+
+cart.forEach(item => {
+
+const itemTotal =
+item.price * item.qty;
+
+total += itemTotal;
+
+message +=
+"- " +
+item.name +
+" × " +
+item.qty +
+" = " +
+itemTotal +
+" сом\n";
+
+});
+
+
+message +=
+"\nЖалпы сумма: " +
+total +
+" сом\n";
+
+
+message +=
+"\nДоставка: 200 сомго чейинкисин Сушисё төлөйт.";
+
+
+message +=
+"\nЭгер доставка 200 сомдон ашса, ашкан бөлүгүн кардар төлөйт.";
+
+
+if(comment){
+
+message +=
+"\n\nКомментарий: " +
+comment;
+
+}
+
+
+/* WHATSAPP NUMBER */
+
+const whatsappNumber =
+"996508867867";
+
+
+const whatsappUrl =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+encodeURIComponent(message);
+
+
+window.open(
+whatsappUrl,
+"_blank"
+);
+
+}
+
+
+/* FILTER */
+
+function filterProducts(category,button){
+
+document
+.querySelectorAll(".category")
+.forEach(btn =>
+btn.classList.remove("active")
+);
+
+button.classList.add("active");
+
+
+document
+.querySelectorAll(".product")
+.forEach(product => {
+
+if(
+category === "all" ||
+product.dataset.category === category
+){
+
+product.style.display = "";
+
+}else{
+
+product.style.display = "none";
+
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
+```
